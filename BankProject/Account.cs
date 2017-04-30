@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace BankProject
 {
+    enum AccountTypes
+    {
+        Checking , 
+        Savings
+    }
     /// <summary>
     /// This class represents a bank account.
     /// Here you canm deposit/withdraw
@@ -27,7 +32,7 @@ namespace BankProject
 
         public decimal Balance { get; private set; }
 
-        public string TypeOfAccount { get; set; }
+        public AccountTypes TypeOfAccount { get; set; }
 
         #endregion
 
@@ -44,7 +49,7 @@ namespace BankProject
             EmailAddress = emailAddress;
         }
 
-        public Account(string emailAddress, string typeOfAccount): this(emailAddress)
+        public Account(string emailAddress, AccountTypes typeOfAccount): this(emailAddress)
         {
             TypeOfAccount = typeOfAccount;
         }

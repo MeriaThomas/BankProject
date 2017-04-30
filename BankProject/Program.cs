@@ -38,27 +38,47 @@ namespace BankProject
                     case "1":
                         Console.Write("Email Address :");
                         var emailAddress = Console.ReadLine();
-                        Console.Write("Type of Account :");
-                        var typeOfAccount = Console.ReadLine();
+
+                        Console.Write("Please choose from the type of accounts :");
+                        var accountTypes = Enum.GetNames(typeof(AccountTypes));
+                        for (int i = 0; i < accountTypes.Length; i++)
+                        {
+                            Console.WriteLine($"{i+1}. {accountTypes[i]}");//will print out as => 1. checking , 2. savings
+                        }
+                        var typeOfAccount = (AccountTypes)(Convert.ToInt32(Console.ReadLine()) - 1);
+
                         Console.Write("Amount to deposit :");
                         var amount = Convert.ToDecimal(Console.ReadLine());
 
                         var account = Bank.CreateAccount(emailAddress, amount, typeOfAccount);
-                        Console.WriteLine($"AccountNumber: {account.AccountNumber}, Type: {account.TypeOfAccount}, Balance: {account.Balance: C}, Email Address: {account.EmailAddress}");
+                        Console.WriteLine($"AccountNumber: {account.AccountNumber}, Type: {account.TypeOfAccount}, Balance: {account.Balance}, Email Address: {account.EmailAddress}");
                         break;
 
                     case "2":
+                        PrintAllAccounts();
                         break;
 
                     case "3":
+                        PrintAllAccounts();
                         break;
 
                     case "4":
+                        PrintAllAccounts();
                         break;
 
                     default:
                         break;
                 }
+            }
+        }
+
+        private static void PrintAllAccounts()
+        {
+            var accounts = Bank.GetAllAccounts();
+            foreach (var a in accounts)
+            {
+                Console.WriteLine($"AccountNumber: {a.AccountNumber}, Type: {a.TypeOfAccount}, Balance: {a.Balance: C}, Email Address: {a.EmailAddress}");
+
             }
         }
     }
