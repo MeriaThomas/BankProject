@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BankProject
 {
-    enum AccountTypes
+    public enum AccountTypes
     {
         Checking , 
         Savings
@@ -15,7 +16,7 @@ namespace BankProject
     /// This class represents a bank account.
     /// Here you canm deposit/withdraw
     /// </summary>
-    class Account
+    public class Account
     {
         #region Variables
 
@@ -28,6 +29,7 @@ namespace BankProject
         /// </summary>
         public string EmailAddress { get; set; }
 
+        [Key]
         public int AccountNumber { get; private set; }
 
         public decimal Balance { get; private set; }
