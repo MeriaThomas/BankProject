@@ -36,6 +36,8 @@ namespace BankProject
 
         public AccountTypes TypeOfAccount { get; set; }
 
+        public virtual ICollection<Transaction> Transactions { get; set; }
+
         #endregion
 
         #region Constructors
