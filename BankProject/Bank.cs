@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BankProject
 {
-    static class Bank
+    public static class Bank
     {
         
         private static BankModel db = new BankModel();
@@ -15,6 +15,7 @@ namespace BankProject
         {
             var account = new Account(emailAddress, typeOfAccount);
             account.Deposit(amount);
+            account.CreatedDate = DateTime.Now;
             db.Accounts.Add(account);
             db.SaveChanges();
             return account;
@@ -22,9 +23,9 @@ namespace BankProject
 
         }
 
-        public static List<Account> GetAllAccounts()
+        public static List<Account> GetAllAccountsByEmailAddress(string emailAddress)
         {
-            return db.Accounts.ToList();
+            return db.Accounts.Where(a => a.EmailAddress == emailAddress).ToList();
         }
 
 

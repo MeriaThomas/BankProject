@@ -34,6 +34,8 @@ namespace BankProject
 
         public decimal Balance { get; private set; }
 
+        public DateTime CreatedDate { get; set; }
+
         public AccountTypes TypeOfAccount { get; set; }
 
         public virtual ICollection<Transaction> Transactions { get; set; }
